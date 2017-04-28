@@ -21,5 +21,11 @@
     {% endif %}
     </div>
 
+    <div>
+        {% if category %}
+           <a href="/rango/category/{{category.slug}}/add_page/">Add Page</a><br />
+        {% endif %}
+    </div>
+
 </body>
 </html>
