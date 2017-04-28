@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Rango</title>
+</head>
+<body>
+    <h1>Rango syas...hello world!</h1>
+
+
+	<div>
+	<h3>Most Liked Categories</h3>
+	{% if categories %}
+	    <ul>
+		    {% for category in categories %}
+			<li>
+				<a href="/rango/category/{{ category.slug }}">{{ category.name }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+	    <strong>There are no categories present.</strong>
+	{% endif %}
+	</div>
+
+	<div>
+	<h3>Most Liked Pages</h3>
+	{% if pages %}
+	    <ul>
+		    {% for page in pages %}
+			<li>
+				<a href="{{ page.url }}">{{ page.title }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+	    <strong>There are no pages present.</strong>
+	{% endif %}
+	</div>
+    
+	<div>
+    <a href="/rango/about/">About</a><br />
+    <img src="{% static "images/background.jpg" %}" alt="Picture of Bk" />
+	</div>
+
+</body>
+</html>
