@@ -1,13 +1,12 @@
-<!DOCTYPE <!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html>
-<head>
-	<title>About</title>
-</head>
-<body>
+
+{% block title_blok %}
+    {{ category.name }}
+{% endblock %}
+
+{% block body_block %}
     <h1>About page</h1>
     HHHHHHH World!<strong>{{ boldmessage }}</strong>
-    <a href="/rango/">Index</a><br />
-    <img src="{{ MEDIR_URL }}cat.jpg" alt="Pictur of Cat" />
-</body>
-</html>
+    <a href="{% url 'rango:index' %}">Index</a><br />
+{% endblock %}
