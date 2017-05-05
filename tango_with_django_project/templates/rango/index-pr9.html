@@ -1,11 +1,18 @@
-{% extends 'rango/base.html' %}
+<!DOCTYPE html>
 {% load staticfiles %}
+<html>
+<head>
+	<title>Rango</title>
+</head>
+<body>
+    <div>
+    	{% if user.is_authenticated %}
+    	    howdy {{ user.username }}
+    	{% else %}
+    	    hey there partner!
+    	{% endif %}
+    </div>
 
-{% block title_block %}
-    Index
-{% endblock %}
-
-{% block body_block %}
     <h1>Rango syas...hello world!</h1>
 
 
@@ -47,15 +54,5 @@
     <img src="{% static "images/background.jpg" %}" alt="Picture of Bk" />
 	</div>
 
-	<div>
-	<ul>
-    	{% if user.is_authenticated %}
-    	    <li><a href="{% url 'rango:restricted' %}">Restricted Page</a></li>
-    	    <li><a href="{% url 'rango:logout' %}">Logout</a></li>
-    	{% else %}
-    	    <li><a href="{% url 'rango:login' %}">Sign In</a></li>
-    	    <li><a href="{% url 'rango:register' %}">Sign Up</a></li>
-    	{% endif %}
-    </ul>
-    </div>
-{% endblock %}
+</body>
+</html>

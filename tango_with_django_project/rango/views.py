@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 
 from rango.models import Category, Page
@@ -8,6 +9,24 @@ from rango.forms import CategoryForm, PageForm
 from rango.forms import UserForm, UserProfileForm
 
 # Create your views here.
+def some_view(request):
+	if not request.user.is_authenticated():
+		return HttpResponse("You are logged in.")
+	else:
+		return HttpResponse("You are not logged in.")
+
+
+@login_required
+def restricted(request):
+	return HttpResponse("Since you're logged in, you can see this text!")
+
+
+@login_required
+def user_logout(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('rango:index'))
+
+
 def user_login(request):
 	if request.method == 'POST':
 		username = request.POST.get('username')
