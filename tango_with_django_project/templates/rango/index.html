@@ -5,6 +5,14 @@
 	<title>Rango</title>
 </head>
 <body>
+    <div>
+    	{% if user.is_authenticated %}
+    	    howdy {{ user.username }}
+    	{% else %}
+    	    hey there partner!
+    	{% endif %}
+    </div>
+
     <h1>Rango syas...hello world!</h1>
 
 
@@ -41,6 +49,8 @@
 	<div>
     <a href="/rango/about/">About</a><br />
     <a href="/rango/add_category/">Add a New Category</a><br />
+    <a href="/rango/register/">Register Here</a><br />
+    <a href="{% url 'rango:login' %}">Login</a><br />
     <img src="{% static "images/background.jpg" %}" alt="Picture of Bk" />
 	</div>
 
